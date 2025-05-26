@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "AndroidLab KotlinDeep"
 include(":app")
 include(":ch1")
+include(":ch2")
