@@ -16,8 +16,13 @@ android {
         versionCode = 1
         versionName = "1.0"
         viewBinding.isEnabled = true
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        //multi dex설정
+        //하나의 앱에서 최대 65000개의 함수만 참조 가능
+        //그 이상의 함수가 로딩 되어야 하는경우
+        multiDexEnabled = true
+
     }
 
     buildTypes {
@@ -48,6 +53,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //firebase core
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation("com.google.firebase:firebase-analytics")
+    //multidex
+    implementation("androidx.multidex:multidex:2.0.1")
+    //auth - email/password
+    implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
+    //firestore
+    implementation("com.google.firebase:firebase-firestore:25.1.4")
+    implementation("com.google.firebase:firebase-messaging:24.1.1")
+
 }
+
