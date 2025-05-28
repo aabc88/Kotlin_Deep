@@ -46,4 +46,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //fragment를 위한 다양한 확장함수 라이브러리
+    implementation("androidx.fragment:fragment-ktx:1.8.7")
 }
