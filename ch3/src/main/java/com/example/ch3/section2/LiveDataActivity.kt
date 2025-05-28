@@ -24,7 +24,7 @@ class LiveDataActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val viewModel: MyViewModel by viewModels()g
+        val viewModel: MyViewModel by viewModels()
         val myLiveData = MyLiveData()
 
         myLiveData.observe(this) {
