@@ -1,0 +1,35 @@
+package com.example.ch3.mission2.viewmodel
+
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.example.ch3.mission2.model.Item
+import com.example.ch3.mission2.model.PageList
+import com.example.ch3.mission2.repository.NewsRepository
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
+class NewsViewModel : ViewModel() {
+    fun getNews(query: String): MutableLiveData<List<Item>> {
+        val liveData = MutableLiveData<List<Item>>()
+        val repository = NewsRepository()
+        repository.getNewsList(query, object : Callback<PageList> {
+            override fun onResponse(call: Call<PageList?>, response: Response<PageList?>) {
+                val results = response.body()?.articles ?: listOf<Item>()
+                //데이터를 activity에 전달한다.
+                liveData.postValue(results)
+            }
+
+            override fun onFailure(
+                call: Call<PageList?>,
+                t: Throwable
+            ) {
+                call.cancel()
+                Log.d("EJ", "onFailure: NewsViewModel : $t")
+            }
+        })
+
+        return liveData
+    }
+}

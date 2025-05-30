@@ -12,6 +12,7 @@ import com.example.ch3.databinding.ActivityRoomTestBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import java.util.Date
 import kotlin.coroutines.CoroutineContext
 
 class RoomTestActivity : AppCompatActivity(), CoroutineScope {
@@ -51,7 +52,7 @@ class RoomTestActivity : AppCompatActivity(), CoroutineScope {
         dao = db.userDao()
 
         binding.btn1.setOnClickListener {
-            val user1 = User(0, "ej", "hong")
+            /*val user1 = User(0, "ej", "hong")
             val user2 = User(0, "sc", "lee")
             val user3 = User(0, "gs", "kim")
 
@@ -63,7 +64,17 @@ class RoomTestActivity : AppCompatActivity(), CoroutineScope {
             dao.getAll().forEach {
                 resultTxt+="$it \n"
             }
-            binding.tvResult.text = resultTxt
+            binding.tvResult.text = resultTxt*/
+
+            val list = mutableListOf("hello", "world")
+            val user = User2(0, "kim", "lee", Address(0, "a", "b", "c"), list, Date())
+            dao.insertUser2(user)
+            var txt = ""
+            dao.getAll2().forEach {
+                txt += "$it\n"
+            }
+            binding.tvResult.text = txt
+
         }
     }
 }
